@@ -6,6 +6,7 @@
   <div>{{ state.a }}</div>
   <div>{{ state.b }}</div>
   <div @click="handleClick">+</div>
+  <div>{{ data }}</div>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
@@ -19,9 +20,10 @@ import {
   getCurrentInstance,
   onMounted,
   reactive,
-  computed,
+  computed
 } from "vue";
 import { ElMessage } from "element-plus";
+import { useStore } from "vuex";
 
 export default defineComponent({
   setup() {
@@ -30,14 +32,14 @@ export default defineComponent({
       console.log(proxy && proxy.$ls);
       ElMessage({
         type: "warning",
-        message: "123",
+        message: "123"
       });
     });
 
     // let store =useStore();
     let state: any = reactive({
       a: 12,
-      b: computed(() => state.a + 1),
+      b: computed(() => state.a + 1)
     });
     const handleClick = (): void => {
       state.a++;
@@ -45,8 +47,9 @@ export default defineComponent({
     return {
       state,
       handleClick,
+      data: useStore().state.user.token
     };
-  },
+  }
 });
 </script>
 

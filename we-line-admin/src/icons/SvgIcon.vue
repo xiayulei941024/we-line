@@ -10,12 +10,12 @@ export default defineComponent({
   props: {
     name: {
       type: String,
-      default: "",
+      default: ""
     },
     className: {
       type: String,
-      default: "",
-    },
+      default: ""
+    }
   },
   setup(props) {
     let state = reactive({
@@ -26,10 +26,10 @@ export default defineComponent({
         } else {
           return "svg-icon";
         }
-      }),
+      })
     });
     return { state };
-  },
+  }
 });
 </script>
 <style scoped>

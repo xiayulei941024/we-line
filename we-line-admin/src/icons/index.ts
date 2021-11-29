@@ -3,8 +3,7 @@
 const req = require.context("@/icons/svg", false, /\.svg$/);
 const requireAll = (requireContext: any) =>
   requireContext.keys().map(requireContext);
-const a = requireAll(req);
-console.log(a);
+requireAll(req);
 /*
     第一步
     npm install svg-sprite-loader svgo svgo-loader --save-dev

@@ -86,10 +86,10 @@ export default defineComponent({
       console.log(123, proxy && proxy.$ls);
       ElMessage({
         type: "warning",
-        message: "123",
+        message: "123"
       });
     });
-  },
+  }
 });
 </script>
 
