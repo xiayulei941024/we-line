@@ -1,5 +1,11 @@
 <template>
-  <div>123</div>
+  <div style="background: #fff">
+    <svg-icon name="404"></svg-icon>
+    <svg-icon name="fan" className="icon-svg"></svg-icon>
+  </div>
+  <div>{{ state.a }}</div>
+  <div>{{ state.b }}</div>
+  <div @click="handleClick">+</div>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
@@ -8,19 +14,38 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, getCurrentInstance, onMounted } from "vue";
+import {
+  defineComponent,
+  getCurrentInstance,
+  onMounted,
+  reactive,
+  computed,
+} from "vue";
 import { ElMessage } from "element-plus";
 
 export default defineComponent({
   setup() {
     const proxy = getCurrentInstance()?.proxy;
     onMounted(() => {
-      console.log(123, proxy && proxy.$ls);
+      console.log(proxy && proxy.$ls);
       ElMessage({
         type: "warning",
         message: "123",
       });
     });
+
+    // let store =useStore();
+    let state: any = reactive({
+      a: 12,
+      b: computed(() => state.a + 1),
+    });
+    const handleClick = (): void => {
+      state.a++;
+    };
+    return {
+      state,
+      handleClick,
+    };
   },
 });
 </script>
