@@ -1,10 +1,29 @@
 <template>
-  <div id="nav">
+  <div>123</div>
+  <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </div>
-  <router-view />
+  <router-view /> -->
 </template>
+
+<script lang="ts">
+import { defineComponent, getCurrentInstance, onMounted } from "vue";
+import { ElMessage } from "element-plus";
+
+export default defineComponent({
+  setup() {
+    const proxy = getCurrentInstance()?.proxy;
+    onMounted(() => {
+      console.log(123, proxy && proxy.$ls);
+      ElMessage({
+        type: "warning",
+        message: "123",
+      });
+    });
+  },
+});
+</script>
 
 <style lang="scss">
 #app {
