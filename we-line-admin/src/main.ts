@@ -6,7 +6,9 @@ import store from "./store";
 const app = createApp(App);
 
 import ElementPlus from "element-plus";
-import "element-plus/dist/index.css";
+// import "@/styles/element-variables.scss";
+// import "element-plus/dist/index.css";
+// import "element-plus/theme-chalk/src/index.scss";
 app.use(ElementPlus);
 
 import "@/icons/index";

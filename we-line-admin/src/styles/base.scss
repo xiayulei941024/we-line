@@ -1,0 +1,20 @@
+
+.row-flex {
+  display: flex;
+  flex-direction: row;
+}
+.col-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.global-loading {
+  .el-loading-spinner {
+    circle {
+      stroke: #fff;
+    }
+    p {
+      color: #fff;
+    }
+  }
+}

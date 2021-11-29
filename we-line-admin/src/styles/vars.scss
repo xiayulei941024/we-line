@@ -1,0 +1,20 @@
+@mixin no-wrap($clamp) {
+  @if $clamp > 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $clamp;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+  } @else {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+  }
+}
+
+$main-color: #03FBFF;
+$border-color: #2E6FC2;
+$light-border-color: rgba(106, 148, 212, .2);
+// $light-border-color: rgba(106, 148, 212, 1);

@@ -6,7 +6,8 @@
   <div>{{ state.a }}</div>
   <div>{{ state.b }}</div>
   <div @click="handleClick">+</div>
-  <div>{{ data }}</div>
+  <div class="abc">{{ data }}</div>
+  <el-button type="primary">123</el-button>
   <!-- <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
@@ -54,6 +55,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+.abc {
+  color: $main-color;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

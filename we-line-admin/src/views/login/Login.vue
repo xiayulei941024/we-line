@@ -1,5 +1,5 @@
 <template>
   <div>
-    首页
+    登录页面
   </div>
 </template>
