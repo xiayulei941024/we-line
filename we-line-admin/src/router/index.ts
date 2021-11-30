@@ -8,8 +8,9 @@ import {
 //进度条
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
+import { MyRoute } from "./interface/interfaceRoute";
 
-const routes: Array<RouteRecordRaw> = [
+const routes: Array<MyRoute> = [
   {
     path: "/login",
     name: "Login",
@@ -23,7 +24,7 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes: routes as Array<RouteRecordRaw>
 });
 
 // 前置守卫

@@ -1,4 +1,14 @@
-const dynamicRoutes = [
+/* 固定的路由 */
+/*
+    meta:{
+        name:侧边栏名字,
+        icon:侧边栏图标,
+        hide:是否在侧边栏隐藏
+    }
+*/
+import { MyRoute } from "../interface/interfaceRoute";
+
+const dynamicRoutes: Array<MyRoute> = [
   {
     path: "",
     component: (): Promise<typeof import("*.vue")> =>

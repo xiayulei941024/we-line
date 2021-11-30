@@ -7,7 +7,9 @@
         hide:是否在侧边栏隐藏
     }
 */
-const permissionRoutes = [
+import { MyRoute } from "../interface/interfaceRoute";
+
+const permissionRoutes: MyRoute[] = [
   {
     component: "",
     path: "order",
