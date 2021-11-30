@@ -13,7 +13,7 @@ const mutations: Mutations = {
 const actions = null;
 
 export default {
-  namespace: true,
+  namespaced: true,
   state,
   mutations,
   actions
