@@ -5,12 +5,16 @@ import store from "./store";
 
 const app = createApp(App);
 
-import ElementPlus from "element-plus";
-// import "@/styles/element-variables.scss";
-// import "element-plus/dist/index.css";
-// import "element-plus/theme-chalk/src/index.scss";
-app.use(ElementPlus);
+// 引入样式
+import "normalize.css";
+import "@/styles/base.scss";
+import "@/styles/reset-element.scss";
 
+// element-plus
+import UseElement from "@/plugins/element-plus";
+app.use(UseElement);
+
+// 
 import "@/icons/index";
 import SvgIcon from "./icons/SvgIcon.vue";
 app.component("svg-icon", SvgIcon);

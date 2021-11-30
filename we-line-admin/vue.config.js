@@ -31,9 +31,10 @@ module.exports = {
 
           // Or array of paths
           resources: [
-            "src/styles/element-variables.scss",
+            // "src/styles/element-variables.scss",
             "src/styles/vars.scss"
-          ]
+          ],
+          hoistUseStatements: true
         })
         .end();
     });
