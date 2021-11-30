@@ -7,7 +7,7 @@
         hide:是否在侧边栏隐藏
     }
 */
-import { MyRoute } from "../interface/interfaceRoute";
+import { MyRoute } from "../interface/InterfaceRoute";
 
 const permissionRoutes: MyRoute[] = [
   {
@@ -20,7 +20,7 @@ const permissionRoutes: MyRoute[] = [
     },
     children: [
       {
-        component: "admin/orderList",
+        component: "order/OrderList",
         path: "list",
         name: "order-list",
         meta: {
@@ -38,7 +38,7 @@ const permissionRoutes: MyRoute[] = [
         },
         children: [
           {
-            component: "admin/productionList",
+            component: "production/ProductionList",
             path: "list",
             name: "production-list",
             meta: {
@@ -49,35 +49,35 @@ const permissionRoutes: MyRoute[] = [
         ]
       }
     ]
-  },
-  {
-    component: "",
-    path: "goods",
-    name: "cproduct-manage",
-    meta: {
-      icon: "el-icon-place",
-      name: "模拟权限2"
-    },
-    children: [
-      {
-        component: "admin/cproductList",
-        path: "list",
-        name: "cproduct-list",
-        meta: {
-          icon: "el-icon-place",
-          name: "产品列表"
-        }
-      }
-    ]
-  },
-  {
-    component: "admin/statistics",
-    path: "classify",
-    name: "statistics-list",
-    meta: {
-      icon: "el-icon-place",
-      name: "模拟权限3"
-    }
   }
+  // {
+  //   component: "",
+  //   path: "goods",
+  //   name: "cproduct-manage",
+  //   meta: {
+  //     icon: "el-icon-place",
+  //     name: "模拟权限2"
+  //   },
+  //   children: [
+  //     {
+  //       component: "admin/cproductList",
+  //       path: "list",
+  //       name: "cproduct-list",
+  //       meta: {
+  //         icon: "el-icon-place",
+  //         name: "产品列表"
+  //       }
+  //     }
+  //   ]
+  // },
+  // {
+  //   component: "admin/statistics",
+  //   path: "classify",
+  //   name: "statistics-list",
+  //   meta: {
+  //     icon: "el-icon-place",
+  //     name: "模拟权限3"
+  //   }
+  // }
 ];
 export default permissionRoutes;

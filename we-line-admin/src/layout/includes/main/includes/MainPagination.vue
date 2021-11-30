@@ -14,7 +14,7 @@
 <script lang="ts">
 import { defineComponent, toRefs } from "vue";
 import { useStore, Store } from "vuex";
-import { State } from "@/store/interface/pagination";
+import { State } from "@/store/interface/InterfacePagination";
 
 export default defineComponent({
   name: "MainPagination",

@@ -1,6 +1,6 @@
 export interface MyRoute {
-  component: string | (() => Promise<typeof import("*.vue")>);
-  path: string;
+  component?: string | (() => Promise<typeof import("*.vue")>);
+  path?: string;
   name?: string;
   meta?: {
     name?: string;
@@ -8,4 +8,5 @@ export interface MyRoute {
     hide?: boolean;
   };
   children?: Array<MyRoute>;
+  redirect?: MyRoute | string;
 }

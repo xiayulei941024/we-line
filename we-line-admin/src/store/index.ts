@@ -14,8 +14,8 @@ const modules = modulesFiles.keys().reduce((modules: any, modulePath) => {
 }, {});
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
+  // state: {},
+  // mutations: {},
+  // actions: {},
   modules
 });

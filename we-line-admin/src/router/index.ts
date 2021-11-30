@@ -8,18 +8,20 @@ import {
 //进度条
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import { MyRoute } from "./interface/interfaceRoute";
+import { MyRoute } from "./interface/InterfaceRoute";
+import store from "@/store";
+import { State } from "@/store/interface/InterfaceUser";
 
 const routes: Array<MyRoute> = [
   {
     path: "/login",
     name: "Login",
     component: () => import("../views/login/Login.vue")
-  },
-  {
-    path: "/",
-    component: () => import("../layout/Layout.vue")
   }
+  // {
+  //   path: "/",
+  //   component: () => import("../layout/Layout.vue")
+  // }
 ];
 
 const router = createRouter({
@@ -35,6 +37,18 @@ router.beforeEach(
     next: NavigationGuardNext
   ) => {
     NProgress.start();
+    if (
+      !(
+        store.state as {
+          user: State;
+        }
+      ).user.permissions &&
+      to.path !== "/login"
+    ) {
+      return store.dispatch("user/FETCH_PERMISSION").then(() => {
+        next({ ...to, replace: true });
+      });
+    }
     next();
   }
 );

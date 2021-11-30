@@ -1,4 +1,4 @@
-import { State, Mutations } from "../interface/pagination";
+import { State, Mutations } from "../interface/InterfacePagination";
 
 const state: State = {
   page: {
