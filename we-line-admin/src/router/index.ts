@@ -53,9 +53,21 @@ router.beforeEach(
   }
 );
 // 后置守卫
-router.afterEach((to: any, from: any, next: any) => {
+router.afterEach((to: any) => {
   NProgress.done();
-  next;
+  try {
+    //设置标题
+    if (to.meta.name) {
+      document.title = to.meta.name;
+    }
+  } catch (err) {
+    err;
+  }
+  // let routerList = to.matched;
+  // //顶部面包屑
+  // store.commit("setCrumbList", routerList);
+  // aside选中的active
+  store.commit("user/SET_CURRENT_MENU", to.name);
 });
 
 export default router;

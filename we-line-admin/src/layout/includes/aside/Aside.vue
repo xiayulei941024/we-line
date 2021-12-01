@@ -1,32 +1,39 @@
 <template>
   <el-aside class="aside">
-    <div class="logo">
-      <el-image
-        class="pic"
-        src="https://indusforce.com/public/source/imgs/logo2.svg"
-        fit="contain"
-      ></el-image>
-    </div>
-
-    <el-menu class="">
-      <el-sub-menu index="1">
-        <template #title>
-          <el-icon><location /></el-icon>
-          <span>Navigator One</span>
-        </template>
-        <el-menu-item-group title="123">
-          <el-menu-item index="1-1">选项1</el-menu-item>
-        </el-menu-item-group>
-      </el-sub-menu>
+    <!-- 顶部 -->
+    <aside-header></aside-header>
+    <!-- 菜单 -->
+    <el-menu :default-active="currentMenu" :unique-opened="true">
+      <aside-menu :menu-list="menuList"></aside-menu>
     </el-menu>
   </el-aside>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed, defineAsyncComponent } from "vue";
+import { useStore, Store } from "vuex";
+import AsideMenu from "./includes/AsideMenu.vue";
 
 export default defineComponent({
-  name: "Aside"
+  name: "Aside",
+  components: {
+    AsideMenu,
+    AsideHeader: defineAsyncComponent(
+      () => import("./includes/AsideHeader.vue")
+    )
+  },
+  setup() {
+    // 获取state
+    const { state }: Store<any> = useStore();
+    // 展示状态
+    const currentMenu = computed(() => state.user.currentMenu);
+    const menuList = computed(() => state.user.asideMenu);
+
+    return {
+      currentMenu,
+      menuList
+    };
+  }
 });
 </script>
 
@@ -37,16 +44,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   box-shadow: $main-shadow;
-  .logo {
-    flex: 0 0 auto;
-    display: flex;
-    height: 70px;
-    .pic {
-      max-width: 80%;
-      max-height: 70px;
-      margin: auto;
-    }
-  }
   .el-menu {
     border: 0;
     flex: 1;

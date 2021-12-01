@@ -27,7 +27,7 @@ const dynamicRoutes: Array<MyRoute> = [
         name: "home",
         meta: {
           name: "首页",
-          icon: "el-icon-s-home"
+          icon: "location"
         }
       },
       // {

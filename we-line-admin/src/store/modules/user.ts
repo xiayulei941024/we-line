@@ -5,14 +5,26 @@ import { clone } from "@/utils/clone";
 import permissionRoutes from "@/router/routes/permission-routes";
 import dynamicRoutes from "@/router/routes/dynamic-routes";
 import router from "@/router/index";
+import { filterAsyncRouter, setDefaultRoute } from "@/utils/router";
 
 const state: State = {
-  permissions: null
+  permissions: null, // 所有路由
+  asideMenu: [], // 导航菜单
+  currentMenu: "" // 当前active导航菜单
 };
 
 const mutations: Mutations = {
+  // 设置权限
   SET_PERMISSION(state: State, permissions: MyRoute | null): void {
     state.permissions = permissions;
+  },
+  // 设置aside菜单
+  SET_MENU(state: State, asideMenu: Array<MyRoute>): void {
+    state.asideMenu = asideMenu;
+  },
+  // 当前选中的导航
+  SET_CURRENT_MENU(state: State, currentMenu: string): void {
+    state.currentMenu = currentMenu;
   }
 };
 
@@ -28,7 +40,7 @@ const actions = {
     children = MainContainer.children;
     //将两种路由结合生成左边的导航栏
     children = children.concat(routes);
-    // commit("SET_MENU", children);
+    commit("SET_MENU", children);
     MainContainer.children = children;
     /*
                 为所有有children的菜单路由设置第一个children为默认路由
@@ -47,39 +59,6 @@ const actions = {
     commit("SET_PERMISSION", [...initialRoutes, ...dynamicRoutes]);
   }
 };
-
-// 路由懒加载
-export const loadView = (
-  view: string
-): (() => Promise<typeof import("*.vue")>) => {
-  return (): Promise<typeof import("*.vue")> => import(`@/views/${view}`);
-};
-//递归处理后端数据
-function filterAsyncRouter(asyncRouterMap: Array<MyRoute>): Array<MyRoute> {
-  return asyncRouterMap.filter((route: MyRoute) => {
-    if (route.children) {
-      route.component = () => import("@/layout/Empty.vue");
-    } else {
-      route.component = loadView(route.component as string);
-    }
-    if (route.children != null && route.children && route.children.length) {
-      route.children = filterAsyncRouter(route.children);
-    } else {
-      delete route["children"];
-      delete route["redirect"];
-    }
-    return true;
-  });
-}
-// 路由重定向 递归为所有有子路由的路由设置第一个children.path为默认路由
-export function setDefaultRoute(routes: Array<MyRoute>): void {
-  routes.forEach((route: MyRoute) => {
-    if (route.children && route.children.length > 0) {
-      route.redirect = { name: route.children[0].name };
-      setDefaultRoute(route.children);
-    }
-  });
-}
 
 export default {
   namespaced: true,
