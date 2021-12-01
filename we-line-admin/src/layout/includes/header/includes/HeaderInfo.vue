@@ -1,21 +1,19 @@
 <template>
   <div class="header-info">
-    <p class="user">你好, lisa</p>
     <el-dropdown>
-      <span class="el-dropdown-link">
-        <el-image src="@/assets/logo.png" class="user-face"></el-image>
-      </span>
+      <div class="user">
+        <p>你好, lisa</p>
+        <el-icon>
+          <arrow-down></arrow-down>
+        </el-icon>
+      </div>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-plus">黄金糕</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus">狮子头</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-plus-outline"
-            >螺蛳粉</el-dropdown-item
-          >
-          <el-dropdown-item icon="el-icon-check">双皮奶</el-dropdown-item>
-          <el-dropdown-item icon="el-icon-circle-check"
-            >蚵仔煎</el-dropdown-item
-          >
+          <el-dropdown-item>黄金糕</el-dropdown-item>
+          <el-dropdown-item>狮子头</el-dropdown-item>
+          <el-dropdown-item>螺蛳粉</el-dropdown-item>
+          <el-dropdown-item>双皮奶</el-dropdown-item>
+          <el-dropdown-item>蚵仔煎</el-dropdown-item>
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -38,7 +36,12 @@ export default defineComponent({
   margin-left: 20px;
   flex: 0 0 auto;
   .user {
-    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    p {
+      margin-right: 8px;
+    }
   }
 }
 </style>
