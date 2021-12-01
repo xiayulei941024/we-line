@@ -6,11 +6,13 @@ import permissionRoutes from "@/router/routes/permission-routes";
 import dynamicRoutes from "@/router/routes/dynamic-routes";
 import router from "@/router/index";
 import { filterAsyncRouter, setDefaultRoute } from "@/utils/router";
+import { RouteRecordNormalized } from "vue-router";
 
 const state: State = {
   permissions: null, // 所有路由
   asideMenu: [], // 导航菜单
-  currentMenu: "" // 当前active导航菜单
+  currentMenu: "", // 当前active导航菜单
+  crumbList: [] // 面包屑
 };
 
 const mutations: Mutations = {
@@ -25,6 +27,10 @@ const mutations: Mutations = {
   // 当前选中的导航
   SET_CURRENT_MENU(state: State, currentMenu: string): void {
     state.currentMenu = currentMenu;
+  },
+  // 设置面包屑
+  SET_CRUMB_LIST(state: State, crumbList: Array<RouteRecordNormalized>): void {
+    state.crumbList = crumbList;
   }
 };
 

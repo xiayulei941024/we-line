@@ -24,4 +24,4 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### git-token
-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
+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

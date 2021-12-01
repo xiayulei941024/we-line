@@ -3,6 +3,7 @@ import {
   createWebHashHistory,
   RouteRecordRaw,
   RouteLocationNormalized,
+  RouteRecordNormalized,
   NavigationGuardNext
 } from "vue-router";
 //进度条
@@ -53,19 +54,20 @@ router.beforeEach(
   }
 );
 // 后置守卫
-router.afterEach((to: any) => {
+router.afterEach((to: RouteLocationNormalized) => {
   NProgress.done();
   try {
     //设置标题
     if (to.meta.name) {
-      document.title = to.meta.name;
+      document.title = to.meta.name as string;
     }
   } catch (err) {
     err;
   }
-  // let routerList = to.matched;
-  // //顶部面包屑
-  // store.commit("setCrumbList", routerList);
+  // 当前路由的所有嵌套路径片段的路由记录
+  const crumbList: Array<RouteRecordNormalized> = to.matched;
+  //顶部面包屑
+  store.commit("user/SET_CRUMB_LIST", crumbList);
   // aside选中的active
   store.commit("user/SET_CURRENT_MENU", to.name);
 });

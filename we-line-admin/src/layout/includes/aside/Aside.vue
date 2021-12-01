@@ -1,10 +1,10 @@
 <template>
   <el-aside class="aside">
     <!-- 顶部 -->
-    <aside-header></aside-header>
+    <aside-header />
     <!-- 菜单 -->
     <el-menu :default-active="currentMenu" :unique-opened="true">
-      <aside-menu :menu-list="menuList"></aside-menu>
+      <aside-menu :menu-list="menuList" />
     </el-menu>
   </el-aside>
 </template>

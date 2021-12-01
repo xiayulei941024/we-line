@@ -17,7 +17,7 @@ const dynamicRoutes: Array<MyRoute> = [
     // redirect: 'home',
     meta: {
       // requiresAuth: true,
-      name: "布局"
+      name: "首页"
     },
     children: [
       {

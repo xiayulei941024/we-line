@@ -1,5 +1,5 @@
 <template>
-  <template v-for="item in menuList" :key="item.name">
+  <template v-for="item in menuList">
     <template v-if="item.children && item.children.length > 0">
       <!-- 外层 -->
       <el-sub-menu :index="item.name" :key="item.name" v-if="!item.meta.hide">

@@ -1,7 +1,28 @@
-import { createStore } from "vuex";
+import { createStore, useStore as vuexStore, Store } from "vuex";
+import { State as UserState } from "./interface/InterfaceUser";
+import { State as PaginationState } from "./interface/InterfacePagination";
+
+// useStore类型
+export function useStore(): Store<MyStoreType> {
+  return vuexStore();
+}
+interface MyModuleState {
+  user: UserState;
+  pagination: PaginationState;
+}
+// 根store中的state的类型
+// interface IRootState {
+// 
+// }
+// type IStoreType = IRootState | IModuleState
+type MyStoreType = MyModuleState;
 
 // https://webpack.js.org/guides/dependency-management/#requirecontext
-const modulesFiles: __WebpackModuleApi.RequireContext = require.context("./modules", true, /\.ts$/);
+const modulesFiles: __WebpackModuleApi.RequireContext = require.context(
+  "./modules",
+  true,
+  /\.ts$/
+);
 
 // you do not need `import app from './modules/app'`
 // it will auto require all vuex module from modules file
